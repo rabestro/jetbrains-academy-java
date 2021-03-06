@@ -1,3 +1,8 @@
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Arrays;
+
 class UserProfile implements Serializable {
     private static final long serialVersionUID = 26292552485L;
 
@@ -12,6 +17,26 @@ class UserProfile implements Serializable {
     }
 
     // implement readObject and writeObject properly
+
+    private void writeObject(ObjectOutputStream oos) throws Exception {
+        // write the custom serialization code here
+        oos.defaultWriteObject();
+        final var encryptPassword = password.chars()
+                .map(c -> c + 1)
+                .toArray();
+        oos.writeObject(encryptPassword);
+    }
+
+    private void readObject(ObjectInputStream ois) throws Exception {
+        // write the custom deserialization code here
+        ois.defaultReadObject();
+        password = Arrays.stream((int[]) ois.readObject())
+                .map(c -> c - 1)
+                .collect(StringBuilder::new,
+                        StringBuilder::appendCodePoint,
+                        StringBuilder::append)
+                .toString();
+    }
 
     public String getLogin() {
         return login;
