@@ -1,2 +1,3 @@
-# jetbrains-academy-java
+# JetBrains Academy Java
+
 JetBrains Academy Java Track
