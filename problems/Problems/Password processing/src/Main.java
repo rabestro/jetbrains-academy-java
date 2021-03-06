@@ -1,7 +1,6 @@
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Arrays;
 
 class UserProfile implements Serializable {
     private static final long serialVersionUID = 26292552485L;
@@ -23,14 +22,17 @@ class UserProfile implements Serializable {
         oos.defaultWriteObject();
         final var encryptPassword = password.chars()
                 .map(c -> c + 1)
-                .toArray();
+                .collect(StringBuilder::new,
+                        StringBuilder::appendCodePoint,
+                        StringBuilder::append)
+                .toString();
         oos.writeObject(encryptPassword);
     }
 
     private void readObject(ObjectInputStream ois) throws Exception {
         // write the custom deserialization code here
         ois.defaultReadObject();
-        password = Arrays.stream((int[]) ois.readObject())
+        password = ((String) ois.readObject()).chars()
                 .map(c -> c - 1)
                 .collect(StringBuilder::new,
                         StringBuilder::appendCodePoint,
