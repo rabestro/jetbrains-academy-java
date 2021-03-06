@@ -1,3 +1,3 @@
-# JetBrains Academy Java
+# JetBrains Academy Java Track
 
 JetBrains Academy Java Track
