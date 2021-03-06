@@ -15,6 +15,7 @@ import static java.nio.file.StandardOpenOption.*;
 public class TextEditor extends JFrame {
     private static final Logger log = Logger.getLogger(TextEditor.class.getName());
 
+    private final JFileChooser fileChooser = new JFileChooser();
     private final JTextArea textArea = new JTextArea();
 
     {
@@ -44,6 +45,8 @@ public class TextEditor extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
         add(toolbar, BorderLayout.NORTH);
 
+//        fileChooser.setVisible(false);
+//        add(fileChooser);
         setJMenuBar(new AppMenu(this::load, this::save));
         setVisible(true);
     }

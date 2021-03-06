@@ -6,14 +6,14 @@ import java.awt.event.KeyEvent;
 
 public class AppMenu extends JMenuBar {
 
-    private final JMenu menu = new JMenu("File");
 
     public AppMenu(final ActionListener loadText, final ActionListener saveText) {
-        menu.setName("MenuFile");
-        menu.setMnemonic(KeyEvent.VK_F);
-        add(menu);
+        final var menuFile = new JMenu("File");
+        menuFile.setName("MenuFile");
+        menuFile.setMnemonic(KeyEvent.VK_F);
+        add(menuFile);
 
-        final var menuItemLoad = new JMenuItem("Load", KeyEvent.VK_L);
+        final var menuItemLoad = new JMenuItem("Open", KeyEvent.VK_L);
         menuItemLoad.setName("MenuLoad");
         menuItemLoad.addActionListener(loadText);
 
@@ -25,9 +25,9 @@ public class AppMenu extends JMenuBar {
         menuItemExit.setName("MenuExit");
         menuItemExit.addActionListener(actionEvent -> System.exit(0));
 
-        menu.add(menuItemLoad);
-        menu.add(menuItemSave);
-        menu.add(menuItemExit);
+        menuFile.add(menuItemLoad);
+        menuFile.add(menuItemSave);
+        menuFile.add(menuItemExit);
 
     }
 }
