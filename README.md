@@ -1,3 +1,4 @@
-# JetBrains Academy Java Track
+# JetBrains Academy 
+## Track: Java Developer
 
 JetBrains Academy Java Track
