@@ -7,11 +7,12 @@ import editor.events.CommandListener;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+import static java.lang.System.Logger.Level.DEBUG;
+
 public class Toolbar extends JPanel {
-    private static final Logger log = Logger.getLogger(Toolbar.class.getName());
+    private static final System.Logger LOGGER = System.getLogger("");
 
     private final CommandListener listener;
     private final JTextField textPattern = new JTextField(15);
@@ -54,7 +55,7 @@ public class Toolbar extends JPanel {
     }
 
     public void useRegex() {
-        log.info("Use regular expressions");
+        LOGGER.log(DEBUG, "Use regular expressions");
         useRegex.setSelected(!useRegex.isSelected());
     }
 }

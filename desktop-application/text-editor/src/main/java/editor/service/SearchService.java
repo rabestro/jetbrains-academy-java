@@ -5,13 +5,14 @@ import editor.component.TextPane;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.IntUnaryOperator;
-import java.util.logging.Logger;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static java.lang.System.Logger.Level.TRACE;
+
 public class SearchService {
-    private static final Logger log = Logger.getLogger(SearchService.class.getName());
+    private static final System.Logger LOGGER = System.getLogger("");
 
     private final TextPane textArea;
     private List<MatchResult> matches;
@@ -27,12 +28,12 @@ public class SearchService {
     }
 
     public void startSearch(final Pattern pattern) {
-        log.entering(SearchService.class.getName(), "startSearch", pattern);
+        LOGGER.log(TRACE, "Start search: {0}", pattern);
         final var matcher = pattern.matcher(textArea.getText());
         matches = matcher.results().collect(Collectors.toUnmodifiableList());
         index = -1;
         next();
-        log.exiting(SearchService.class.getName(), "startSearch", matches.size());
+        LOGGER.log(TRACE, "Exit search. Found: {0}", matches.size());
     }
 
     public void next() {
