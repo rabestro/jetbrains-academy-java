@@ -7,12 +7,13 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Logger;
 
+import static java.lang.System.Logger.Level.TRACE;
+import static java.lang.System.Logger.Level.WARNING;
 import static java.nio.file.StandardOpenOption.*;
 
 public class FileService extends JFileChooser {
-    private static final Logger log = Logger.getLogger(FileService.class.getName());
+    private static final System.Logger LOGGER = System.getLogger("");
 
     private final TextPane textPane;
 
@@ -25,37 +26,37 @@ public class FileService extends JFileChooser {
     }
 
     public void open() {
-        log.entering(getName(), "open", "Open a document");
+        LOGGER.log(TRACE, getName(), "open", "Open a document");
         if (showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             openDocument();
         }
     }
 
     public void save() {
-        log.entering(getName(), "save", "Save a document");
+        LOGGER.log(TRACE, getName(), "save", "Save a document");
         if (showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             saveDocument();
         }
     }
 
     private void openDocument() {
-        log.entering(getName(), "openDocument", getSelectedFile().getAbsolutePath());
+        LOGGER.log(TRACE, getName(), "openDocument", getSelectedFile().getAbsolutePath());
         final var filePath = Path.of(getSelectedFile().toURI());
         try {
             textPane.setText(Files.readString(filePath));
         } catch (IOException e) {
             textPane.setText("");
-            log.warning(e::getMessage);
+            LOGGER.log(WARNING, e::getMessage);
         }
     }
 
     private void saveDocument() {
-        log.entering(getName(), "saveDocument", getSelectedFile().getAbsolutePath());
+        LOGGER.log(TRACE, getName(), "saveDocument", getSelectedFile().getAbsolutePath());
         final var filePath = Path.of(getSelectedFile().toURI());
         try {
             Files.writeString(filePath, textPane.getText(), CREATE, WRITE, TRUNCATE_EXISTING);
         } catch (IOException e) {
-            log.warning(e::getMessage);
+            LOGGER.log(WARNING, e::getMessage);
         }
     }
 }
