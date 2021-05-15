@@ -9,10 +9,11 @@ import editor.service.SearchService;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.logging.Logger;
+
+import static java.lang.System.Logger.Level.WARNING;
 
 public class TextEditor extends JFrame {
-    private static final Logger log = Logger.getLogger(TextEditor.class.getName());
+    private static final System.Logger LOGGER = System.getLogger("");
 
     private final TextPane textPane = new TextPane();
     private final SearchService searchService = new SearchService(textPane);
@@ -58,7 +59,7 @@ public class TextEditor extends JFrame {
                 toolbar.useRegex();
                 return;
             default:
-                log.warning("Unimplemented action occurs");
+                LOGGER.log(WARNING, "Unimplemented action occurs");
         }
     }
 
