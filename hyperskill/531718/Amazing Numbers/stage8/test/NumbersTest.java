@@ -82,7 +82,7 @@ public final class NumbersTest extends StageTest {
     );
     private static final Checker PROPERTIES_OF = new RegexChecker(
             "properties of \\d",
-            "The first line of number's properties should contain \"Properties of {0}\"."
+            "The first line of number''s properties should contain \"Properties of {0}\"."
     );
     private static final Checker MUTUALLY_EXCLUSIVE = new TextChecker(
             "The request contains mutually exclusive properties",

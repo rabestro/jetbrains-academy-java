@@ -67,7 +67,7 @@ public class ListChecker extends Checker {
             final var actualLine = iterator.next();
             final var matcher = LINE_PATTERN.matcher(actualLine);
             if (!matcher.matches()) {
-                feedback = "Can't parse line: \"{0}\". Expected: {1} is ...";
+                feedback = "Can''t parse line: \"{0}\". Expected: {1} is ...";
                 parameters = new Object[]{actualLine, expectedNumber};
                 return false;
             }
