@@ -1,0 +1,18 @@
+type: edu
+files:
+- name: src/numbers/Main.java
+  visible: true
+- name: test/util/Checker.java
+  visible: false
+- name: test/util/TextChecker.java
+  visible: false
+- name: test/util/UserProgram.java
+  visible: false
+- name: test/util/LinesChecker.java
+  visible: false
+- name: test/util/RegexChecker.java
+  visible: false
+- name: test/BuzzChecker.java
+  visible: false
+- name: test/NumbersTest.java
+  visible: false
