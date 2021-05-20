@@ -1,0 +1,22 @@
+type: edu
+files:
+- name: test/util/Checker.java
+  visible: false
+- name: test/util/TextChecker.java
+  visible: false
+- name: test/util/UserProgram.java
+  visible: false
+- name: test/util/LinesChecker.java
+  visible: false
+- name: test/util/RegexChecker.java
+  visible: false
+- name: test/Request.java
+  visible: false
+- name: test/ListChecker.java
+  visible: false
+- name: test/NumbersTest.java
+  visible: false
+- name: test/NumberProperty.java
+  visible: false
+- name: test/PropertiesChecker.java
+  visible: false
