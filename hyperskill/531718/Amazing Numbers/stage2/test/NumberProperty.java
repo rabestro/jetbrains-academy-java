@@ -30,8 +30,10 @@ public enum NumberProperty implements LongPredicate {
 
     public Optional<Boolean> extractValue(String output) {
         final var matcher = pattern.matcher(output);
-        matcher.find();
-        return Optional.ofNullable(matcher.group("value")).map(Boolean::valueOf);
+        final var isFound = matcher.find();
+        return Optional
+                .ofNullable(isFound ? matcher.group("value") : null)
+                .map(Boolean::valueOf);
     }
 
 }

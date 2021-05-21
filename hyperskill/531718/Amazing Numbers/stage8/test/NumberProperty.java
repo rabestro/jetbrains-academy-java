@@ -55,9 +55,9 @@ public enum NumberProperty implements LongPredicate {
 
     public Optional<Boolean> extractValue(String output) {
         final var matcher = pattern.matcher(output);
-        matcher.find();
+        final var isFound = matcher.find();
         return Optional
-                .ofNullable(matcher.group("value"))
+                .ofNullable(isFound ? matcher.group("value") : null)
                 .map(Boolean::valueOf);
     }
 
