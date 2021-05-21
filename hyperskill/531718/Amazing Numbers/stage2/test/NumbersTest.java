@@ -29,7 +29,7 @@ public final class NumbersTest extends StageTest {
     private static final Checker PROFILE_LINES = new LinesChecker(NumberProperty.values().length + 1);
 
     private static final Checker FINISHED = new Checker(UserProgram::isFinished,
-            "The program should finish when the user entered \"0\"."
+            "The program should finish."
     );
     private final long[] notNaturalNumbers = {0, -1, -2, -3, -4, -5};
 
