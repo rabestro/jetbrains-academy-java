@@ -11,7 +11,7 @@ import java.util.stream.LongStream;
 
 public class ListChecker extends Checker {
     private static final Pattern LINE_PATTERN = Pattern.compile(
-            "(?<number>[\\d,. ]*\\d)\\s*(is|:|-)\\s*(?<properties>.+)",
+            "\\s*(?<number>[\\d,. ]*\\d)\\s*(is|:|-)\\s*(?<properties>.+)",
             Pattern.CASE_INSENSITIVE);
     private static final Pattern NON_DIGIT_SYMBOL = Pattern.compile("\\D");
     private static final Pattern PROPERTIES_SEPARATOR = Pattern.compile("[, ;]+");
