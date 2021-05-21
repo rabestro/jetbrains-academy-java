@@ -1,0 +1,24 @@
+type: edu
+files:
+- name: test/animals.data.yaml
+  visible: false
+- name: test/animals.script.yaml
+  visible: false
+- name: test/GuessAnimalTest.java
+  visible: false
+- name: test/negative-answers.data.yaml
+  visible: false
+- name: test/negative-answers.script.yaml
+  visible: false
+- name: test/positive-answers.data.yaml
+  visible: false
+- name: test/positive-answers.script.yaml
+  visible: false
+- name: test/Scenario.java
+  visible: false
+- name: test/unclear-answers.data.yaml
+  visible: false
+- name: test/unclear-answers.script.yaml
+  visible: false
+- name: src/animals/Main.java
+  visible: true

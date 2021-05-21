@@ -1,0 +1,14 @@
+type: edu
+files:
+- name: test/file-formats.data.yaml
+  visible: false
+- name: test/file-formats.script.yaml
+  visible: false
+- name: test/GuessAnimalTest.java
+  visible: false
+- name: test/menu.data.yaml
+  visible: false
+- name: test/menu.script.yaml
+  visible: false
+- name: test/Scenario.java
+  visible: false

@@ -1,0 +1,26 @@
+type: edu
+files:
+- name: test/unclear-answers.script.yaml
+  visible: false
+- name: test/unclear-answers.data.yaml
+  visible: false
+- name: test/the-first-question.script.yaml
+  visible: false
+- name: test/positive-answers.script.yaml
+  visible: false
+- name: test/Scenario.java
+  visible: false
+- name: test/the-first-question.data.yaml
+  visible: false
+- name: test/positive-answers.data.yaml
+  visible: false
+- name: test/GuessAnimalTest.java
+  visible: false
+- name: test/negative-answers.script.yaml
+  visible: false
+- name: test/negative-answers.data.yaml
+  visible: false
+- name: test/guessing-game.data.yaml
+  visible: false
+- name: test/guessing-game.script.yaml
+  visible: false

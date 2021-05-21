@@ -1,0 +1,22 @@
+type: edu
+files:
+- name: test/Scenario.java
+  visible: false
+- name: test/incorrect-statement.script.yaml
+  visible: false
+- name: test/correct-statement.data.yaml
+  visible: false
+- name: test/complete-scenario.script.yaml
+  visible: false
+- name: test/GuessAnimalTest.java
+  visible: false
+- name: test/facts-and-question.script.yaml
+  visible: false
+- name: test/facts-and-question.data.yaml
+  visible: false
+- name: test/correct-statement.script.yaml
+  visible: false
+- name: test/complete-scenario.data.yaml
+  visible: false
+- name: test/incorrect-statement.data.yaml
+  visible: false
