@@ -4,19 +4,19 @@
 
 <h2>Objectives</h2>
 
-<p>Make the status bar more informative. We already have the <code>Game in progress</code> status; add a new message that displays the current turn: <code>The turn of {0} Player ({1})</code>. After the end of the game, the program should output the following message: <code>The {0} Player ({1}) wins</code>. You can use the <code>MessageFormat</code> class for this (take a look at the official <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/MessageFormat.html" rel="noopener noreferrer nofollow">Oracle doc</a> for help). Instead of <code>{0}</code>, insert either <code>Human</code> or <code>Robot</code>. Instead of <code>{1}</code>, output either <code>X</code> or <code>O</code>.</p>
+<p>Make the status bar more informative. We already have the <code>Game in progress</code> status; add a new message that displays the current turn: <code>The turn of {0} Player ({1})</code>. After the end of the game, the program should output the following message: <code>The {0} Player ({1}) wins</code>. You can use the <code>MessageFormat</code> class for this (take a look at the official <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/MessageFormat.html" rel="noopener noreferrer nofollow">Oracle doc</a> for help). Instead of <code>{0}</code>, insert either <code>Human</code> or <code>Robot</code>. Instead of <code>{1}</code>, output either <code>X</code> or <code>O</code>.</p>
 
 <p>Add a Game menu that includes five items:</p>
 
 <ol>
-    <li>Human vs. Human</li>
-    <li>Human vs. Robot</li>
-    <li>Robot vs. Human</li>
-    <li>Robot vs. Robot</li>
+    <li>Human vs Human</li>
+    <li>Human vs Robot</li>
+    <li>Robot vs Human</li>
+    <li>Robot vs Robot</li>
     <li>Exit</li>
 </ol>
 
-<p>You can add a dividing line before the <code>Exit</code> item. You can use the following piece of code for this:</p>
+<p>You can add a dividing line before the <code>Exit</code> item. You can use the following piece of code for this:</p>
 
 <pre><code class="language-java">menuGame.addSeparator();
 menuGame.add(menuItemExit);</code></pre>
@@ -26,12 +26,12 @@ menuGame.add(menuItemExit);</code></pre>
 <p>For testing purposes, the menu components should be named as follows:</p>
 
 <ul>
-    <li><code>menuGame</code></li>
-    <li><code>menuHumanHuman</code></li>
-    <li><code>menuHumanRobot</code></li>
-    <li><code>menuRobotHuman</code></li>
-    <li><code>menuRobotRobot</code></li>
-    <li><code>menuExit</code></li>
+    <li><code>MenuGame</code></li>
+    <li><code>MenuHumanHuman</code></li>
+    <li><code>MenuHumanRobot</code></li>
+    <li><code>MenuRobotHuman</code></li>
+    <li><code>MenuRobotRobot</code></li>
+    <li><code>MenuExit</code></li>
 </ul>
 
 <h2>Examples</h2>
