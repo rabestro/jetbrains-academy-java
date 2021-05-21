@@ -393,7 +393,7 @@ public final class NumbersTest extends StageTest {
                 "1 9 even palindromic",
                 "1 10 even sunny",
                 "100000 2 buzz gapful",
-                "100 4 odd spy gapful",
+                "100 4 odd spy",
                 "2000 4 palindromic duck"
         )
                 .map(Request::new)
