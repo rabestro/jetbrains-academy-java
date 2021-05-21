@@ -157,7 +157,7 @@ public class TicTacToeTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(feedback = "The 'ButtonStartReset' component should have the follwoing text: 'Start' after the program starts")
+    @DynamicTest(feedback = "The 'ButtonStartReset' component should have the following text: 'Start' after the program starts")
     CheckResult test9() {
         buttonStartReset.requireText("Start");
         return correct();
