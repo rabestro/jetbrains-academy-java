@@ -66,7 +66,7 @@ public final class NumbersTest extends StageTest {
                 .check(new RegexChecker("number is (even|odd)",
                         "The program should calculate and print the parity of the given number."))
                 .check(new TextChecker(number % 2 == 0 ? "even" : "odd",
-                        "Number''s parity is incorrect. Number {0} should be {1}."))
+                        "Number''s parity is incorrect. Number {0} should be {2}."))
                 .check(new BuzzChecker(number))
                 .check(FINISHED)
                 .result();
