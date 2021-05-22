@@ -104,7 +104,7 @@ public final class NumbersTest extends StageTest {
     };
     private final String[] mutuallyExclusive = new String[]{
             // Stage #6 Two properties
-            "5 1 odd even", "4 3 even odd", "32 2 sunny square", "3153 2 spy duck", "6 7 duck spy"
+            "5 1 odd even", "4 3 even odd", "32 2 sunny square", "2341 4 square sunny", "3153 2 spy duck", "6 7 duck spy"
     };
     // Stage #3
 
@@ -410,6 +410,22 @@ public final class NumbersTest extends StageTest {
                 .execute(request)
                 .check(request.getLinesChecker())
                 .check(new ListChecker(request))
+                .check(RUNNING)
+                .check(ASK_REQUEST)
+                .execute(0)
+                .check(FINISHED)
+                .result();
+    }
+
+    @DynamicTest(data = "mutuallyExclusive", order = 80)
+    CheckResult mutuallyExclusivePropertiesTest(String mutuallyExclusive) {
+        return program
+                .start()
+                .check(WELCOME)
+                .check(HELP)
+                .check(ASK_REQUEST)
+                .execute(mutuallyExclusive)
+                .check(MUTUALLY_EXCLUSIVE)
                 .check(RUNNING)
                 .check(ASK_REQUEST)
                 .execute(0)

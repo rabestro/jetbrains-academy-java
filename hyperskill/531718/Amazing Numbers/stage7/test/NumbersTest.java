@@ -421,4 +421,21 @@ public final class NumbersTest extends StageTest {
                 .result();
     }
 
+    @DynamicTest(data = "mutuallyExclusive", order = 80,
+            feedback = "The program should check for mutually exclusive properties")
+    CheckResult mutuallyExclusivePropertiesTest(String mutuallyExclusive) {
+        return program
+                .start()
+                .check(WELCOME)
+                .check(HELP)
+                .check(ASK_REQUEST)
+                .execute(mutuallyExclusive)
+                .check(MUTUALLY_EXCLUSIVE)
+                .check(RUNNING)
+                .check(ASK_REQUEST)
+                .execute(0)
+                .check(FINISHED)
+                .result();
+    }
+
 }
