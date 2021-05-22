@@ -31,18 +31,22 @@ public final class NumbersTest extends StageTest {
     private static final Checker FINISHED = new Checker(UserProgram::isFinished,
             "The program should finish."
     );
-    private final long[] notNaturalNumbers = {0, -1, -2, -3, -4, -5};
+    private final long[] notNaturalNumbers = {-1, -2, -3, -4, -5};
 
-    @DynamicTest(data = "notNaturalNumbers", order = 10)
-    CheckResult notNaturalNumbersTest(final long number) {
+    @DynamicTest(order = 1)
+    CheckResult zeroTest() {
         return new UserProgram()
                 .start()
                 .check(ASK_FOR_NUMBER)
-                .execute(number)
-                .check(ERROR_MESSAGE)
+                .execute(0)
+                .check(new RegexChecker("is( not|n't) natural",
+                        "Only computers and robots start counting from zero. " +
+                                "For humans the natural numbers starts from one. " +
+                                "Expected message: \"... is not natural\""))
                 .check(FINISHED)
                 .result();
     }
+
 
     private long[] getNumbers() {
         return LongStream.concat(

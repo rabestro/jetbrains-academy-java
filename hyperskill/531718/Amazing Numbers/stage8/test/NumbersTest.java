@@ -3,15 +3,14 @@ import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import util.*;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
-
-import static java.util.stream.IntStream.range;
 
 public final class NumbersTest extends StageTest {
     private static final Random random = new Random();
@@ -105,6 +104,13 @@ public final class NumbersTest extends StageTest {
     };
     private final String[] wrongTwoProperties = new String[]{
             "1 10 boy friend", "40 2 long day", "37 4 hot girl", "67 2 strong drake"
+    };
+    private static final String[] ONE_PROPERTY_WRONG = new String[]{
+            "26534 3 buzz evens palindromic",
+            "4384 2 odd -buzz -palindromic shiny gapful",
+            "1 7 hot sunny odd odd -even",
+            "78343 4 sunny -duck mac odd",
+            "3 4 -even -sunny -hot"
     };
     private final String[] mutuallyExclusive = new String[]{
             // Stage #6 Two properties
@@ -356,36 +362,14 @@ public final class NumbersTest extends StageTest {
 
     // Stage #7
 
-    private String getWrongRequest() {
-        final var start = 1 + random.nextInt(Short.MAX_VALUE);
-        final var count = 1 + random.nextInt(MAX_COUNT);
-
-        final var properties = new ArrayList<String>();
-        final var incorrect = new String[]{
-                "bAY", "Boy", "~~", "...", "242", "&hj", "simple", "evens",
-                "speck", "_odd_", "reverse", "gipful", "buzzz", "drake"
-        };
-        properties.add(incorrect[random.nextInt(incorrect.length)]);
-
-        final var correct = new ArrayList<>(List.of(NumberProperty.values()));
-        Collections.shuffle(correct);
-        range(0, random.nextInt(MAX_PROPERTIES))
-                .mapToObj(correct::get)
-                .map(Enum::name)
-                .forEach(properties::add);
-        Collections.shuffle(properties);
-
-        return start + " " + count + " " + String.join(" ", properties);
-    }
-
-    @DynamicTest(repeat = RANDOM_TESTS, order = 70)
-    CheckResult wrongPropertiesRequestTest() {
+    @DynamicTest(data = "ONE_PROPERTY_WRONG", order = 72)
+    CheckResult oneWrongPropertyTest(String request) {
         return program
                 .start()
                 .check(WELCOME)
                 .check(HELP)
                 .check(ASK_REQUEST)
-                .execute(getWrongRequest())
+                .execute(request)
                 .check(ERROR_PROPERTY)
                 .check(HELP_PROPERTIES)
                 .check(LIST_PROPERTIES)
@@ -413,7 +397,7 @@ public final class NumbersTest extends StageTest {
                 .toArray(Request[]::new);
     }
 
-    @DynamicTest(data = "getRandomRequests", order = 65)
+    @DynamicTest(data = "getRandomRequests", order = 75)
     CheckResult manyPropertiesTest(Request request) {
         return program
                 .start()
