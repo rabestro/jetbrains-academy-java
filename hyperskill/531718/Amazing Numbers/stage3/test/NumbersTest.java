@@ -32,7 +32,7 @@ public final class NumbersTest extends StageTest {
 
     private static final Checker ASK_REQUEST = new TextChecker(
             "enter a request",
-            "The program should ask a user to enter a request."
+            "The program should print \"Enter a request\" instead of asking for a natural number."
     );
     private static final Checker ERROR_FIRST = new RegexChecker(
             "The first (parameter|number) should be a natural number or zero",
