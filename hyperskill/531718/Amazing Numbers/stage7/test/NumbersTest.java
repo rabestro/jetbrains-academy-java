@@ -94,7 +94,7 @@ public final class NumbersTest extends StageTest {
     private final UserProgram program = new UserProgram();
 
     private final String[] wrongProperty = new String[]{
-            "1 10 gay", "40 2 bay", "37 4 8", "67 2 +y-", "2 54 Prime", "6 8 ...", "5 9 ,"
+            "1 10 May", "40 2 bay", "37 4 8", "67 2 day", "2 54 Prime", "6 8 ...", "5 9 none"
     };
     private final String[] wrongSecondProperty = new String[]{
             "1 10 odd girl", "40 2 even day", "37 4 spy 89", "67 2 DUCK +"
