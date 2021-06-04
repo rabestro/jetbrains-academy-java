@@ -62,7 +62,7 @@ public final class NumbersTest extends StageTest {
                 .start()
                 .check(ASK_FOR_NUMBER)
                 .execute(number)
-                .check(new LinesChecker(4))
+//                .check(new LinesChecker(4))
                 .check(new RegexChecker("number is (even|odd)",
                         "The program should calculate and print the parity of the given number."))
                 .check(new TextChecker(number % 2 == 0 ? "even" : "odd",
