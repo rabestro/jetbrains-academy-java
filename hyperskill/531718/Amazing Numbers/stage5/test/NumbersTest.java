@@ -54,7 +54,7 @@ public final class NumbersTest extends StageTest {
     private static final Checker ERROR_PROPERTY = new RegexChecker(
             "The property .+ is wrong",
             "The request: \"{0}\" has one wrong property. "
-                    + "Expected message: \"property ... is wrong\"."
+                    + "Expected message: \"The property ... is wrong\"."
     );
     private static final Checker HELP_PROPERTIES = new TextChecker(
             "Available properties"
