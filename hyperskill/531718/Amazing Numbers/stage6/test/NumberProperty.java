@@ -6,7 +6,7 @@ import java.util.stream.LongStream;
 import static java.lang.Character.getNumericValue;
 
 public enum NumberProperty implements LongPredicate {
-    BUZZ(x -> x % 7 == 0 || x % 10 == 7),
+    BUZZ(number -> number % 7 == 0 || number % 10 == 7),
     DUCK(number -> digits(number).anyMatch(digit -> digit == 0)),
     PALINDROMIC(number -> {
         final var digits = String.valueOf(number);
@@ -14,11 +14,22 @@ public enum NumberProperty implements LongPredicate {
     }),
     GAPFUL(number -> number >= 100 &&
             number % (getNumericValue(String.valueOf(number).charAt(0)) * 10L + number % 10) == 0),
-    SPY(x -> digits(x).sum() == digits(x).reduce(1L, (a, b) -> a * b)),
-    SQUARE(number -> pow((long) Math.sqrt(number), 2) == number),
-    SUNNY(number -> NumberProperty.SQUARE.test(number + 1)),
-    EVEN(x -> x % 2 == 0),
-    ODD(x -> x % 2 != 0);
+    SPY(number -> {
+        long sum = 0, product = 1;
+        for (long rest = number; rest > 0; rest /= 10) {
+            long digit = rest % 10;
+            product *= digit;
+            if (product == 0) {
+                return false;
+            }
+            sum += digit;
+        }
+        return sum == product;
+    }),
+    SQUARE(number -> Math.sqrt(number) % 1 == 0),
+    SUNNY(number -> Math.sqrt(number + 1) % 1 == 0),
+    EVEN(number -> number % 2 == 0),
+    ODD(number -> number % 2 != 0);
 
     private final LongPredicate hasProperty;
     private final Pattern pattern = Pattern.compile(
@@ -32,14 +43,6 @@ public enum NumberProperty implements LongPredicate {
 
     private static LongStream digits(long number) {
         return Long.toString(number).chars().mapToLong(Character::getNumericValue);
-    }
-
-    public static long pow(long n, long p) {
-        long result = 1;
-        for (long i = p; i > 0; --i) {
-            result *= n;
-        }
-        return result;
     }
 
     @Override
