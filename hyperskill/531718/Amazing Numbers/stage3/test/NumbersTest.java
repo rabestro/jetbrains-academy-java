@@ -111,10 +111,10 @@ public final class NumbersTest extends StageTest {
     CheckResult longNumbersTest(long number) {
         return new UserProgram()
                 .start()
-                .check(ASK_FOR_NUMBER)
+                .check(ASK_REQUEST)
                 .execute(number)
                 .check(PROPERTIES_OF)
-                .check(PROFILE_LINES)
+                .check(PROPERTIES_OF)
                 .check(new PropertiesChecker(number))
                 .check(FINISHED)
                 .result();
