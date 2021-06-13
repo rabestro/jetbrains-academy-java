@@ -172,5 +172,4 @@ public final class NumbersTest extends StageTest {
                 .result();
     }
 
-
 }
