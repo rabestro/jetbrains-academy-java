@@ -8,8 +8,11 @@ public class BuzzChecker extends Checker {
     private static final Pattern BUZZ_NUMBER = Pattern.compile(
             "is(?<buzz>n't| not)?+( a)?+ buzz", Pattern.CASE_INSENSITIVE);
     private static final Pattern EXPLANATION = Pattern.compile(
-            "divisible by 7 and it ends with 7|divisible by 7|ends with 7"
-                    + "|neither divisible by 7 nor it ends with 7", Pattern.CASE_INSENSITIVE);
+            "is divisible by 7 and ends with 7"
+                    + "|is divisible by 7"
+                    + "|ends with 7"
+                    + "|is neither divisible by 7 nor does it end with 7",
+            Pattern.CASE_INSENSITIVE);
 
     private final long number;
 
@@ -38,10 +41,10 @@ public class BuzzChecker extends Checker {
         }
 
         final var explanation = isBuzz ? isDivisible ? isEndsWith7
-                ? "divisible by 7 and it ends with 7"
-                : "divisible by 7"
+                ? "is divisible by 7 and ends with 7"
+                : "is divisible by 7"
                 : "ends with 7"
-                : "neither divisible by 7 nor it ends with 7";
+                : "is neither divisible by 7 nor does it end with 7";
 
 
         if (!matcher.usePattern(EXPLANATION).find()) {

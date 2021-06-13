@@ -83,11 +83,8 @@ public final class NumbersTest extends StageTest {
     }
 
     @DynamicTest(order = 20)
-    CheckResult naturalNumbersTest() {
-        final var numbers = LongStream.concat(
-                LongStream.range(1, FIRST_NUMBERS),
-                random.longs(RANDOM_TESTS, 1, Long.MAX_VALUE)
-        );
+    CheckResult firstNumbersTest() {
+        final var numbers = LongStream.range(1, FIRST_NUMBERS);
 
         program.start().check(WELCOME).check(HELP);
 
@@ -102,6 +99,23 @@ public final class NumbersTest extends StageTest {
                 .check(RUNNING)
                 .check(ASK_REQUEST)
                 .execute(0)
+                .check(FINISHED)
+                .result();
+    }
+
+    private long[] getLongNumbers() {
+        return random.longs(RANDOM_TESTS, Integer.MAX_VALUE, Long.MAX_VALUE).toArray();
+    }
+
+    @DynamicTest(data = "getLongNumbers", order = 30)
+    CheckResult longNumbersTest(long number) {
+        return new UserProgram()
+                .start()
+                .check(ASK_FOR_NUMBER)
+                .execute(number)
+                .check(PROPERTIES_OF)
+                .check(PROFILE_LINES)
+                .check(new PropertiesChecker(number))
                 .check(FINISHED)
                 .result();
     }
