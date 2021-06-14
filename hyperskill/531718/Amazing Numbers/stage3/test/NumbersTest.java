@@ -96,7 +96,6 @@ public final class NumbersTest extends StageTest {
                 .check(RUNNING));
 
         return program
-                .check(RUNNING)
                 .check(ASK_REQUEST)
                 .execute(0)
                 .check(FINISHED)
@@ -114,11 +113,11 @@ public final class NumbersTest extends StageTest {
                 .check(ASK_REQUEST)
                 .execute(number)
                 .check(PROPERTIES_OF)
-                .check(PROPERTIES_OF)
                 .check(new PropertiesChecker(number))
+                .check(ASK_REQUEST)
+                .execute(0)
                 .check(FINISHED)
                 .result();
     }
-
 
 }
