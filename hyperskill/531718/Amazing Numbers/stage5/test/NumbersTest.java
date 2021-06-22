@@ -22,43 +22,24 @@ public final class NumbersTest extends StageTest {
 
     private static final Checker WELCOME = new TextChecker("Welcome to Amazing Numbers!");
 
-    private static final String EXPLAIN = "The program should explain this in the help.";
     private static final Function<UserProgram, UserProgram> HELP =
             new TextChecker("Supported requests")
-                    .andThen(new RegexChecker(
-                            "(one|a) natural number",
-                            "In this stage, a user can enter one number to print a card. " + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "two natural numbers",
-                            "In this stage, a user can enter two numbers to print a list. " + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "property to search for",
-                            "In this stage, a user can enter two numbers and a property to search for. "
-                                    + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "enter 0 to exit",
-                            "Display the instructions on how to exit"));
+                    .andThen(new TextChecker("a natural number"))
+                    .andThen(new TextChecker("two natural numbers"))
+                    .andThen(new TextChecker("property to search for"))
+                    .andThen(new TextChecker("enter 0 to exit"));
 
-    private static final Checker ASK_REQUEST = new TextChecker(
-            "enter a request",
-            "The program should ask a user to enter a request."
-    );
-    private static final Checker ERROR_FIRST = new RegexChecker(
-            "The first (parameter|number) should be a natural number or zero",
-            "The first parameter \"{0}\" is wrong. The program should print an error message."
-    );
-    private static final Checker ERROR_SECOND = new RegexChecker(
-            "The second (parameter|number) should be a natural number",
-            "The second parameter \"{0}\" is wrong. The program should print an error message."
-    );
+    private static final Checker ASK_REQUEST = new TextChecker("enter a request");
+    private static final Checker ERROR_FIRST = new TextChecker("first parameter should be a natural number or zero");
+    private static final Checker ERROR_SECOND = new TextChecker("second parameter should be a natural number");
+
     private static final Checker ERROR_PROPERTY = new RegexChecker(
             "The property .+ is wrong",
             "The request: \"{0}\" has one wrong property. "
                     + "Expected message: \"The property ... is wrong\"."
     );
-    private static final Checker HELP_PROPERTIES = new TextChecker(
-            "Available properties"
-    );
+    private static final Checker HELP_PROPERTIES = new TextChecker("Available properties");
+
     private static final Checker LIST_PROPERTIES = new Checker(
             program -> Arrays.stream(NumberProperty.values())
                     .map(Enum::name)
