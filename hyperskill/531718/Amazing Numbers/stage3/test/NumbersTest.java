@@ -20,15 +20,10 @@ public final class NumbersTest extends StageTest {
 
     private static final Checker WELCOME = new TextChecker("Welcome to Amazing Numbers!");
 
-    private static final String EXPLAIN = "The program should explain this in the help.";
     private static final Function<UserProgram, UserProgram> HELP =
             new TextChecker("Supported requests")
-                    .andThen(new TextChecker(
-                            "enter a natural number",
-                            "In this stage, a user can enter one number to print a card. " + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "enter 0 to exit",
-                            "Display the instructions on how to exit"));
+                    .andThen(new TextChecker("enter a natural number"))
+                    .andThen(new TextChecker("enter 0 to exit"));
 
     private static final Checker ASK_REQUEST = new TextChecker(
             "enter a request",

@@ -19,23 +19,13 @@ public final class NumbersTest extends StageTest {
 
     private static final Checker WELCOME = new TextChecker("Welcome to Amazing Numbers!");
 
-    private static final String EXPLAIN = "The program should explain this in the help.";
     private static final Function<UserProgram, UserProgram> HELP =
             new TextChecker("Supported requests")
-                    .andThen(new RegexChecker(
-                            "(one|a) natural number",
-                            "In this stage, a user can enter one number to print a card. " + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "two natural numbers",
-                            "In this stage, a user can enter two numbers to print a list. " + EXPLAIN))
-                    .andThen(new TextChecker(
-                            "enter 0 to exit",
-                            "Display the instructions on how to exit"));
+                    .andThen(new TextChecker("a natural number"))
+                    .andThen(new TextChecker("two natural numbers"))
+                    .andThen(new TextChecker("enter 0 to exit"));
 
-    private static final Checker ASK_REQUEST = new TextChecker(
-            "enter a request",
-            "The program should ask a user to enter a request."
-    );
+    private static final Checker ASK_REQUEST = new TextChecker("enter a request");
     private static final Checker ERROR_FIRST = new RegexChecker(
             "The first (parameter|number) should be a natural number or zero",
             "The first parameter \"{0}\" is wrong. The program should print an error message."
@@ -44,7 +34,6 @@ public final class NumbersTest extends StageTest {
             "The second (parameter|number) should be a natural number",
             "The second parameter \"{0}\" is wrong. The program should print an error message."
     );
-
     private static final Checker PROPERTIES_OF = new RegexChecker(
             "properties of \\d",
             "The first line of number''s properties should contain \"Properties of {0}\"."
@@ -56,7 +45,6 @@ public final class NumbersTest extends StageTest {
             "The program should finish when the user entered \"0\"."
     );
     private final UserProgram program = new UserProgram();
-
 
     // Stage #3
 
