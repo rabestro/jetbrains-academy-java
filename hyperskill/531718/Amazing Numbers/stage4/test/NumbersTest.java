@@ -26,14 +26,9 @@ public final class NumbersTest extends StageTest {
                     .andThen(new TextChecker("enter 0 to exit"));
 
     private static final Checker ASK_REQUEST = new TextChecker("enter a request");
-    private static final Checker ERROR_FIRST = new RegexChecker(
-            "The first (parameter|number) should be a natural number or zero",
-            "The first parameter \"{0}\" is wrong. The program should print an error message."
-    );
-    private static final Checker ERROR_SECOND = new RegexChecker(
-            "The second (parameter|number) should be a natural number",
-            "The second parameter \"{0}\" is wrong. The program should print an error message."
-    );
+    private static final Checker ERROR_FIRST = new TextChecker("first parameter should be a natural number or zero");
+    private static final Checker ERROR_SECOND = new TextChecker("second parameter should be a natural number");
+
     private static final Checker PROPERTIES_OF = new RegexChecker(
             "properties of \\d",
             "The first line of number''s properties should contain \"Properties of {0}\"."
